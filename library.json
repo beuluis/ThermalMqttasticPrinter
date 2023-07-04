@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
   "name": "ThermalMqttasticPrinter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The counter part to my ThermalMqttastic npm library",
   "keywords": "mqtt, thermal, printer",
   "export": {
-    "exclude": [".github"]
+    "exclude": [".github", ".gitignore"]
   },
   "repository": {
     "type": "git",
