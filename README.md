@@ -9,7 +9,7 @@
   <h3 align="center">ThermalMqttasticPrinter</h3>
 
   <p align="center">
-    The counter part to my [ThermalMqttastic](https://www.npmjs.com/package/@beuluis/thermal-mqttastic) npm library. Please reefer to those docs.
+    The counter part to my <a href="https://www.npmjs.com/package/@beuluis/thermal-mqttastic">ThermalMqttastic</a> npm library. Please reefer to those docs.
     <br />
     <br />
     ·
