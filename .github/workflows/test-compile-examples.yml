@@ -11,10 +11,10 @@ jobs:
         example:
           - path: examples/arduino.ino
             board: uno
-            dependencies: [knolleary/PubSubClient, arduino-libraries/Ethernet]
+            dependencies: knolleary/PubSubClient arduino-libraries/Ethernet
           - path: examples/esp32.ino
             board: esp32dev
-            dependencies: [knolleary/PubSubClient]
+            dependencies: knolleary/PubSubClient
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
@@ -28,13 +28,7 @@ jobs:
           python-version: "3.9"
       - name: Install PlatformIO Core
         run: pip install --upgrade platformio
-      - name: Install Examples Libraries
-        run: |
-          for dependency in "${{ matrix.example.dependencies }}"; do
-            echo $dependency
-            pio pkg install --library $dependency --no-save
-          done
       - name: Build PlatformIO examples
-        run: pio ci --board=${{ matrix.example.board }}
+        run: pio ci --lib="." --project-option="lib_deps=${{ matrix.example.dependencies }}" --board=${{ matrix.example.board }}
         env:
           PLATFORMIO_CI_SRC: ${{ matrix.example.path }}
