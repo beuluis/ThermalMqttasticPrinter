@@ -1,0 +1,41 @@
+name: 'Publish pack on PlatformIO registry'
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  publish-pio:
+    runs-on: ubuntu-latest
+    environment:
+      name: latest
+      url: ${{ steps.package-version-url.outputs.packageVersionUrl }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install PlatformIO Core
+        run: pip install --upgrade platformio
+      - name: Extract name from library.json
+        uses: sergeysova/jq-action@v2
+        id: name
+        with:
+          cmd: 'jq .name library.json -r'
+      - name: Extract version from library.json
+        uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: 'jq .version library.json -r'
+      - name: Get version url
+        id: package-version-url
+        run: echo "packageVersionUrl=https://registry.platformio.org/libraries/beuluis/${{ steps.name.outputs.value }}?version=${{ steps.version.outputs.value }}" >> "$GITHUB_OUTPUT"
+      - name: Publish to PlatformIO
+        run: pio pkg publish --no-interactive

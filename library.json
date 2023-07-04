@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
+  "name": "ThermalMqttasticPrinter",
+  "version": "0.0.1",
+  "description": "The counter part to my ThermalMqttastic npm library",
+  "keywords": "mqtt, thermal, printer",
+  "export": {
+    "exclude": [".github"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beuluis/ThermalMqttasticPrinter.git"
+  },
+  "authors": [
+    {
+      "name": "Luis Beu",
+      "email": "me@luisbeu.de",
+      "url": "https://luisbeu.de"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/beuluis/ThermalMqttasticPrinter/blob/master/README.md",
+  "dependencies": {},
+  "frameworks": ["arduino"],
+  "platforms": "*"
+}
