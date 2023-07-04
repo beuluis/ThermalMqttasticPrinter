@@ -1,0 +1,7 @@
+name: 'Test compile examples with board'
+
+on: [push, pull_request]
+
+jobs:
+  test-compile-examples:
+   uses: ./.github/workflows/test-compile-examples.yml
