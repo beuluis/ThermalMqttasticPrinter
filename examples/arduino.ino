@@ -48,7 +48,7 @@ void setup() {
   Serial.begin(115200);
   printerSerial.begin(9600); // Initialize the thermal printer serial connection with the appropriate baud rate
 
-  Ethernet.begin(mac); // Replace 'mac' with your Ethernet shield MAC address
+  Ethernet.begin(12345678); // Replace 'test' with your Ethernet shield MAC address
 
   connectToMQTT();
 }
