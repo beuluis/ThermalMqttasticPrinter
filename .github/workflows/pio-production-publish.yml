@@ -38,4 +38,6 @@ jobs:
         id: package-version-url
         run: echo "packageVersionUrl=https://registry.platformio.org/libraries/beuluis/${{ steps.name.outputs.value }}?version=${{ steps.version.outputs.value }}" >> "$GITHUB_OUTPUT"
       - name: Publish to PlatformIO
+        env:
+          PLATFORMIO_AUTH_TOKEN: ${{ secrets.PIO_TOKEN }}
         run: pio pkg publish --no-interactive
