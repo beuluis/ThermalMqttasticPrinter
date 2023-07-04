@@ -1,4 +1,4 @@
-name: 'Test compile examples with board'
+name: "Test compile examples with board"
 
 on:
   workflow_call:
@@ -11,13 +11,10 @@ jobs:
         example:
           - path: examples/arduino.ino
             board: uno
-            dependencies:
-              - knolleary/PubSubClient
-              - arduino-libraries/Ethernet
+            dependencies: [knolleary/PubSubClient, arduino-libraries/Ethernet]
           - path: examples/esp32.ino
             board: esp32dev
-            dependencies:
-              - knolleary/PubSubClient
+            dependencies: [knolleary/PubSubClient]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
@@ -28,12 +25,12 @@ jobs:
           key: ${{ runner.os }}-pio
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
       - name: Install PlatformIO Core
         run: pip install --upgrade platformio
       - name: Install Examples Libraries
         run: |
-          for dependency in "${{ matrix.example.dependencies[@] }}"; do
+          for dependency in "${{ matrix.example.dependencies }}"; do
             echo $dependency
             pio pkg install --library $dependency --no-save
           done
