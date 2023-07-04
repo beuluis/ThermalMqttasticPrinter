@@ -34,7 +34,8 @@ jobs:
       - name: Install Examples Libraries
         run: |
           for dependency in ${{ matrix.example.dependencies }}; do
-            pio pkg install $dependency
+            echo $dependency
+            pio lib --global install $dependency
           done
       - name: Build PlatformIO examples
         run: pio ci --board=${{ matrix.example.board }}
