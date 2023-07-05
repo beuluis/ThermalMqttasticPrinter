@@ -1,0 +1,34 @@
+name: "Test compile examples with board"
+
+on:
+  workflow_call:
+
+jobs:
+  test-compile-examples:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example:
+          # - path: examples/arduino.ino
+          #   board: uno
+          #   dependencies: knolleary/PubSubClient, arduino-libraries/Ethernet
+          - path: examples/esp32.ino
+            board: esp32dev
+            dependencies: knolleary/PubSubClient
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: Install PlatformIO Core
+        run: pip install --upgrade platformio
+      - name: Build PlatformIO examples
+        run: pio ci --lib="." --project-option="lib_deps=${{ matrix.example.dependencies }}" --board=${{ matrix.example.board }}
+        env:
+          PLATFORMIO_CI_SRC: ${{ matrix.example.path }}

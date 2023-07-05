@@ -6,7 +6,11 @@ on:
       - created
 
 jobs:
+  test-compile-examples:
+    uses: ./.github/workflows/test-compile-examples.yml
+
   publish-pio:
+    needs: test-compile-examples
     runs-on: ubuntu-latest
     environment:
       name: latest
