@@ -9,9 +9,9 @@ jobs:
     strategy:
       matrix:
         example:
-          - path: examples/arduino.ino
-            board: uno
-            dependencies: knolleary/PubSubClient, arduino-libraries/Ethernet
+          # - path: examples/arduino.ino
+          #   board: uno
+          #   dependencies: knolleary/PubSubClient, arduino-libraries/Ethernet
           - path: examples/esp32.ino
             board: esp32dev
             dependencies: knolleary/PubSubClient

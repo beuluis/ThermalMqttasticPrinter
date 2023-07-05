@@ -1,3 +1,4 @@
+// This is just a draft. I can not test this rn.
 #include <Arduino.h>
 
 #include <Ethernet.h>
@@ -48,7 +49,8 @@ void setup() {
   Serial.begin(115200);
   printerSerial.begin(9600); // Initialize the thermal printer serial connection with the appropriate baud rate
 
-  Ethernet.begin(12345678); // Replace 'test' with your Ethernet shield MAC address
+  byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
+  Ethernet.begin(mac);
 
   connectToMQTT();
 }
