@@ -9,7 +9,7 @@
   <h3 align="center">ThermalMqttasticPrinter</h3>
 
   <p align="center">
-    The counter part to my <a href="https://www.npmjs.com/package/@beuluis/thermal-mqttastic">ThermalMqttastic</a> npm library. Please reefer to those docs.
+    The counter part to the MqttasticAdapter of my <a href="https://www.npmjs.com/package/@beuluis/thermaltastic">Thermaltastic</a> npm library. Please reefer to those docs.
     <br />
     <br />
     ·
@@ -28,7 +28,7 @@ pio lib beuluis/ThermalMqttasticPrinter
 
 ## Usage
 
-See the [examples](./examples/) directory.
+See the [examples](https://github.com/beuluis/ThermalMqttasticPrinter/tree/main/examples) directory.
 
 <!-- CONTRIBUTING -->
 
